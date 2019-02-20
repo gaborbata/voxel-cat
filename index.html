@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="voxel-cat is an entry for the JS1k 2019 &quot;X&quot; JavaScript code golfing competition, where the goal is to create a fancy demo up to 1024 bytes.">
+  <meta name="copyright" content="Copyright (c) 2019 Gabor Bata">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gabor_bata">
+  <meta name="twitter:creator" content="@gabor_bata">
+  <meta property="og:title" content="voxel-cat">
+  <meta property="og:description" content="voxel-cat is an entry for the JS1k 2019 &quot;X&quot; JavaScript code golfing competition, where the goal is to create a fancy demo up to 1024 bytes.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="http://gaborbata.github.io/voxel-cat/">
+  <meta property="og:image" content="http://gaborbata.github.io/voxel-cat/voxel-cat.png">
+  <title>voxel-cat</title>
+
+  <style type="text/css">
+    body {
+      background-color: #7ce;
+      margin: 0;
+    }
+
+    #wrapper {
+      display: table;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    #container {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    #a {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-height: 500px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    #footer {
+      bottom: 0;
+      color: #557;
+      font-family: sans-serif;
+      font-size: 12px;
+      height: 30px;
+      left: 0;
+      position: fixed;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+
+  <div id="footer">
+    voxel-cat | js1k-2019 &quot;X&quot; | &copy; Gabor Bata
+  </div>
+
+  <div id="wrapper">
+    <div id="container">
+      <canvas id="a" width="500" height="500"></canvas>
+    </div>
+  </div>
+
+  <script src="voxel-cat.min.js"></script>
+</html>

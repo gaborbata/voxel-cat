@@ -1,0 +1,3 @@
+* linguist-vendored=false
+resources/**/* linguist-vendored
+gradlew* linguist-vendored

@@ -1,0 +1,62 @@
+repositories {
+  mavenCentral()
+}
+
+ext {
+  original = "voxel-cat.js"
+  optimized = "voxel-cat.min.js"
+}
+
+configurations {
+  closureCompiler
+}
+
+dependencies {
+  closureCompiler 'com.google.javascript:closure-compiler:v20190121'
+}
+
+task optimize(type: JavaExec) {
+  classpath configurations.closureCompiler
+  main = 'com.google.javascript.jscomp.CommandLineRunner'
+  def closureArgs = []
+  closureArgs << "--compilation_level=ADVANCED_OPTIMIZATIONS"
+  closureArgs << "--js_output_file=${optimized}"
+  closureArgs << "--language_out=ECMASCRIPT_2015"
+  closureArgs << "${original}"
+  args closureArgs
+}
+
+task postprocess(dependsOn: optimize) {
+  doLast {
+    File file = new File("${optimized}")
+    if (!file.exists()) {
+      throw new GradleException("Could not found file: ${optimized}")
+    }
+    file.write file.text.
+      replaceAll("\n", "").
+      replaceAll("'use strict';", "").
+      replaceAll(~/\((\w)\)=>/, '$1=>').
+      replaceAll(~/\(\)=>/, '_=>').
+      replaceAll(~/};$/, "}")
+  }
+}
+
+task verify(dependsOn: postprocess) {
+  doLast {
+    File file = new File("${optimized}")
+    println "${optimized} size: ${file.size()}"
+    if (file.size() > 1024) {
+      throw new GradleException('File size must not exceed 1024 bytes.')
+    }
+  }
+}
+
+task base64(dependsOn: verify) {
+  doLast {
+    File file = new File("${optimized}")
+    File out = new File("${optimized}.b64")
+    out.write file.text.bytes.encodeBase64().toString()
+  }
+}
+
+defaultTasks 'optimize', 'postprocess', 'verify', 'base64'
