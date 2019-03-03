@@ -75,7 +75,7 @@
             return s;
         });
 
-    // clear canvas with backround color
+    // clear canvas with background color
     c.fillStyle = '#7ce';
     c.fillRect(0, 0, 500, 500);
 
