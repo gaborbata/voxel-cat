@@ -12,7 +12,7 @@ configurations {
 }
 
 dependencies {
-  closureCompiler 'com.google.javascript:closure-compiler:v20190121'
+  closureCompiler 'com.google.javascript:closure-compiler:v20190215'
 }
 
 task optimize(type: JavaExec) {
