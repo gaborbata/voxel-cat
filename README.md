@@ -1,4 +1,4 @@
-# voxel-cat
+# voxel-cat ![Optimize](https://github.com/gaborbata/voxel-cat/workflows/Optimize/badge.svg)
 
 ## Overview
 
